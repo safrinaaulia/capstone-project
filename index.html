@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SIKLUSAYAM — Smart Poultry Learning & Management Platform. Educational dashboard for poultry students and beginner farmers." />
+  <title>SIKLUSAYAM — Smart Poultry Platform</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     SIDEBAR NAVIGATION
+═══════════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar" aria-label="Main navigation">
+  <div class="sidebar-brand">
+    <div class="brand-logo" aria-hidden="true">
+      <!-- Inline hen SVG logo -->
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <ellipse cx="20" cy="22" rx="10" ry="8" fill="#F2C94C"/>
+        <ellipse cx="13" cy="15" rx="5" ry="4.5" fill="#F2C94C"/>
+        <path d="M10 12 Q11 8 13 12 Q14 8 16 12" fill="#e05c5c" stroke="#e05c5c" stroke-width="0.5"/>
+        <ellipse cx="11.5" cy="16.5" rx="1.5" ry="2" fill="#e05c5c"/>
+        <path d="M8 15 L5 16 L8 17Z" fill="#F2C94C"/>
+        <circle cx="11" cy="13.5" r="1" fill="#25352C"/>
+        <circle cx="11.3" cy="13.2" r="0.4" fill="white"/>
+        <path d="M29 18 Q33 14 32 20 Q30 16 29 19Z" fill="#A87952"/>
+        <path d="M29 21 Q33 18 32 23 Q30 19 29 22Z" fill="#c9985e"/>
+        <rect x="17" y="29" width="2" height="5" rx="1" fill="#F2C94C"/>
+        <rect x="22" y="29" width="2" height="5" rx="1" fill="#F2C94C"/>
+        <path d="M17 34 L14 35.5 M17 34 L17 36 M17 34 L19.5 35.5" stroke="#F2C94C" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M22 34 L19.5 35.5 M22 34 L22 36 M22 34 L24.5 35.5" stroke="#F2C94C" stroke-width="1.2" stroke-linecap="round"/>
+        <ellipse cx="30" cy="29" rx="3.5" ry="4.5" fill="#F8F6EF" stroke="#e8d87a" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="brand-text">
+      <span class="brand-name">SIKLUSAYAM</span>
+      <span class="brand-tagline">Smart Poultry Platform</span>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav" role="navigation">
+    <div class="nav-section-label">Learning</div>
+
+    <a href="#" class="nav-link active" data-page="dashboard" aria-current="page">
+      <span class="nav-icon" aria-hidden="true">⊞</span>
+      <span class="nav-text">Dashboard</span>
+    </a>
+    <a href="#" class="nav-link" data-page="lifecycle">
+      <span class="nav-icon" aria-hidden="true">↻</span>
+      <span class="nav-text">Chicken Lifecycle</span>
+    </a>
+    <a href="#" class="nav-link" data-page="eggformation">
+      <span class="nav-icon" aria-hidden="true">◉</span>
+      <span class="nav-text">Egg Formation</span>
+    </a>
+    <a href="#" class="nav-link" data-page="simulation">
+      <span class="nav-icon" aria-hidden="true">⚙</span>
+      <span class="nav-text">Poultry Simulation</span>
+    </a>
+
+    <div class="nav-section-label">Management</div>
+
+    <a href="#" class="nav-link" data-page="ai">
+      <span class="nav-icon" aria-hidden="true">✦</span>
+      <span class="nav-text">Smart Poultry AI</span>
+    </a>
+    <a href="#" class="nav-link" data-page="production">
+      <span class="nav-icon" aria-hidden="true">↗</span>
+      <span class="nav-text">Egg Production</span>
+    </a>
+    <a href="#" class="nav-link" data-page="health">
+      <span class="nav-icon" aria-hidden="true">♥</span>
+      <span class="nav-text">Chicken Health</span>
+    </a>
+    <a href="#" class="nav-link" data-page="learning">
+      <span class="nav-icon" aria-hidden="true">☰</span>
+      <span class="nav-text">Learning Resources</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="demo-pill" role="note">⚠ Demonstration Data</div>
+    <p class="sidebar-credit">AI Builders Challenge 2026</p>
+  </div>
+</aside>
+
+<!-- ═══════════════════════════════════════════
+     OVERLAY (mobile)
+═══════════════════════════════════════════ -->
+<div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════════
+     MAIN WRAPPER
+═══════════════════════════════════════════ -->
+<div class="main-wrapper" id="mainWrapper">
+
+  <!-- TOP NAVIGATION -->
+  <header class="topnav" role="banner">
+    <div class="topnav-left">
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle sidebar" aria-expanded="false" aria-controls="sidebar">
+        <span></span><span></span><span></span>
+      </button>
+      <h1 class="page-heading" id="pageHeading">Dashboard</h1>
+    </div>
+
+    <div class="topnav-right">
+      <!-- Search -->
+      <div class="search-wrap" role="search">
+        <label for="globalSearch" class="sr-only">Search modules</label>
+        <span class="search-prefix" aria-hidden="true">🔍</span>
+        <input type="search" id="globalSearch" class="search-field" placeholder="Search modules…" autocomplete="off" aria-autocomplete="list" aria-owns="searchDropdown" />
+        <ul class="search-dropdown" id="searchDropdown" role="listbox" aria-label="Search results"></ul>
+      </div>
+
+      <!-- Notification -->
+      <button class="icon-btn" id="notifBtn" aria-label="View notifications">
+        <span aria-hidden="true" class="icon-bell">🔔</span>
+        <span class="notif-badge" id="notifBadge" aria-label="1 new notification">1</span>
+      </button>
+
+      
+<!-- User Profile -->
+<div class="user-profile-wrapper">
+  <button
+    class="user-chip"
+    id="userProfileBtn"
+    type="button"
+    aria-expanded="false"
+    aria-controls="userProfileMenu"
+  >
+    <div class="user-avatar" aria-hidden="true">SA</div>
+    <div class="user-meta">
+      <span class="user-name">Siklus Admin</span>
+      <span class="user-role">Farm Manager</span>
+    </div>
+    <span class="profile-chevron">▾</span>
+  </button>
+
+  <div class="user-profile-menu" id="userProfileMenu" hidden>
+    <div class="profile-menu-header">
+      <strong>Siklus Admin</strong>
+      <span>Farm Manager</span>
+    </div>
+    <button type="button" data-profile-action="profile">
+      Profil Admin
+    </button>
+  </div>
+</div>
+  </header>
+
+  <!-- PAGE CONTENT -->
+  <main class="content-area" id="contentArea" role="main">
+
+    <!-- ═══ PAGE: DASHBOARD ═══════════════════════════════════ -->
+    <section class="page active" id="page-dashboard" aria-labelledby="heading-dashboard">
+      <h2 id="heading-dashboard" class="sr-only">Dashboard</h2>
+
+      <div class="demo-banner" role="note">
+        📋 All figures below are <strong>demonstration data</strong> from simulated CSV files. They do not represent real farm measurements.
+      </div>
+
+      <!-- KPI CARDS -->
+      <div class="kpi-row" role="list" aria-label="Key performance indicators">
+        <div class="kpi-card kpi-green" role="listitem">
+          <div class="kpi-icon" aria-hidden="true">🐔</div>
+          <div class="kpi-body">
+            <div class="kpi-label">Total Chickens</div>
+            <div class="kpi-value" id="kpiChickens">250</div>
+            <div class="kpi-sub">Active laying hens</div>
+          </div>
+        </div>
+        <div class="kpi-card kpi-yellow" role="listitem">
+          <div class="kpi-icon" aria-hidden="true">🥚</div>
+          <div class="kpi-body">
+            <div class="kpi-label">Daily Egg Production</div>
+            <div class="kpi-value" id="kpiEggs">185</div>
+            <div class="kpi-sub">Eggs collected today</div>
+          </div>
+        </div>
+        <div class="kpi-card kpi-brown" role="listitem">
+          <div class="kpi-icon" aria-hidden="true">📅</div>
+          <div class="kpi-body">
+            <div class="kpi-label">Average Chicken Age</div>
+            <div class="kpi-value" id="kpiAge">24 wks</div>
+            <div class="kpi-sub">Across all flocks</div>
+          </div>
+        </div>
+        <div class="kpi-card kpi-accent" role="listitem">
+          <div class="kpi-icon" aria-hidden="true">📊</div>
+          <div class="kpi-body">
+            <div class="kpi-label">Egg Production Rate</div>
+            <div class="kpi-value" id="kpiRate">74%</div>
+            <div class="kpi-sub">Hen Day Production</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DASHBOARD GRID -->
+      <div class="dash-grid">
+        <div class="card span-2">
+          <div class="card-head">
+            <h3 class="card-title">Production Trend <span class="src-tag">data_produksi.csv</span></h3>
+            <span class="card-sub">Last 7 days (demonstration)</span>
+          </div>
+          <canvas id="dashChart" class="chart-canvas" aria-label="Egg production trend chart showing HDP percentage over the last 7 days"></canvas>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3 class="card-title">Flock Summary <span class="src-tag">data_ayam.csv</span></h3></div>
+          <div id="dashFlockList" class="flock-list"><p class="loading-msg">Loading…</p></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3 class="card-title">Quick Navigation</h3></div>
+          <div class="quick-grid" role="list">
+            <button class="quick-btn" data-page="lifecycle" aria-label="Go to Chicken Lifecycle"><span aria-hidden="true">↻</span><small>Life Cycle</small></button>
+            <button class="quick-btn" data-page="eggformation" aria-label="Go to Egg Formation"><span aria-hidden="true">◉</span><small>Egg Formation</small></button>
+            <button class="quick-btn" data-page="simulation" aria-label="Go to Poultry Simulation"><span aria-hidden="true">⚙</span><small>Simulation</small></button>
+            <button class="quick-btn" data-page="ai" aria-label="Go to Smart Poultry AI"><span aria-hidden="true">✦</span><small>AI Assistant</small></button>
+            <button class="quick-btn" data-page="production" aria-label="Go to Egg Production"><span aria-hidden="true">↗</span><small>Production</small></button>
+            <button class="quick-btn" data-page="health" aria-label="Go to Chicken Health"><span aria-hidden="true">♥</span><small>Health</small></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PAGE: CHICKEN LIFECYCLE ═══════════════════════════ -->
+    <section class="page" id="page-lifecycle" aria-labelledby="heading-lifecycle">
+      <h2 id="heading-lifecycle" class="sr-only">Chicken Lifecycle</h2>
+      <div class="demo-banner" role="note">Growth stage data sourced from <code>data_fase_ayam.csv</code>. Feed estimates from <code>data_pakan.csv</code>. Educational simulation only.</div>
+      <div id="lcError" class="error-msg" style="display:none" role="alert"></div>
+      <div class="lc-stage-row" id="lcStageRow" role="list" aria-label="Lifecycle stages"></div>
+      <div class="lc-panel" id="lcPanel" style="display:none" role="region" aria-label="Stage detail">
+        <button class="close-btn" id="lcCloseBtn" aria-label="Close stage detail">✕</button>
+        <div id="lcPanelBody"></div>
+      </div>
+      <div class="lc-feed-section" id="lcFeedSection" style="display:none" role="region" aria-label="Feed requirements">
+        <div class="card-head"><h3 class="card-title">Feed Requirement <span class="src-tag">data_pakan.csv</span></h3></div>
+        <div id="lcFeedBody"></div>
+      </div>
+    </section>
+
+    <!-- ═══ PAGE: EGG FORMATION ═══════════════════════════════ -->
+    <section class="page" id="page-eggformation" aria-labelledby="heading-eggformation">
+      <h2 id="heading-eggformation" class="sr-only">Egg Formation Explorer</h2>
+      <div class="demo-banner" role="note">This module explains the biological egg formation process — from ovulation through the oviduct to laying. Educational content only.</div>
+      <div class="egg-layout">
+        <div class="egg-steps-col" id="eggStepsCol" role="list" aria-label="Egg formation steps"></div>
+        <div class="egg-diagram-col" aria-hidden="false">
+          <figure class="egg-figure">
+            <svg class="egg-svg" viewBox="0 0 260 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cross-section diagram of a chicken egg showing its internal structures">
+              <title>Egg cross-section diagram</title>
+              <ellipse cx="130" cy="165" rx="84" ry="104" fill="#fef9e7" stroke="#dfc84a" stroke-width="2.5" id="svgShell"/>
+              <!-- Pigment coat overlay — visible only during Step 7 (Shell Pigmentation) -->
+              <ellipse cx="130" cy="165" rx="83" ry="103" fill="rgba(160,90,30,0)" stroke="rgba(160,90,30,0)" stroke-width="3" opacity="0" id="svgPigment"/>
+              <ellipse cx="130" cy="165" rx="77" ry="96" fill="#fef3c7" stroke="#e8c840" stroke-width="1.5" id="svgOuterMem"/>
+              <ellipse cx="130" cy="165" rx="71" ry="89" fill="#fffde7" stroke="#f0d058" stroke-width="1" id="svgInnerMem"/>
+              <ellipse cx="130" cy="168" rx="61" ry="77" fill="rgba(255,255,255,0.88)" stroke="#d4d4d4" stroke-width="1" id="svgAlbumen"/>
+              <path d="M130 112 Q119 142 130 166 Q141 142 130 112Z" fill="rgba(232,190,60,0.3)" id="svgChalaza"/>
+              <path d="M130 220 Q119 196 130 166 Q141 196 130 220Z" fill="rgba(232,190,60,0.3)"/>
+              <ellipse cx="130" cy="165" rx="35" ry="35" fill="#f2c94c" stroke="#d4a520" stroke-width="1.5" id="svgYolk"/>
+              <ellipse cx="130" cy="152" rx="7" ry="4.5" fill="#fff8dc" stroke="#c89818" stroke-width="1" id="svgGerm"/>
+              <!-- Infundibulum illustration -->
+<g id="svgInfundibulum" opacity="0" pointer-events="none">
+    <!-- Funnel-shaped oviduct -->
+    <path
+        d="M12 105 Q25 88 43 96 Q55 103 63 119
+           Q51 113 43 119 Q30 128 20 145
+           Q14 130 12 105Z"
+        fill="#f6c6a8"
+        stroke="#c98260"
+        stroke-width="2"
+        stroke-linejoin="round"
+    />
+
+    <!-- Released yolk entering the funnel -->
+    <circle
+        cx="47"
+        cy="107"
+        r="8"
+        fill="#f2c94c"
+        stroke="#d4a520"
+        stroke-width="1.5"
+    />
+
+    <text
+        x="8"
+        y="158"
+        font-size="9"
+        fill="#5a6e52"
+        font-family="'Segoe UI',sans-serif"
+    >Infundibulum</text>
+</g>
+              <path d="M53 80 Q130 60 207 80 Q181 100 79 100Z" fill="rgba(180,215,255,0.6)" stroke="#8bb8d8" stroke-width="1" id="svgAir"/>
+              <text x="217" y="83" font-size="8.5" fill="#5a6e52" font-family="'Segoe UI',sans-serif">Air Cell</text>
+              <text x="214" y="138" font-size="8.5" fill="#5a6e52" font-family="'Segoe UI',sans-serif">Shell</text>
+              <text x="214" y="165" font-size="8.5" fill="#5a6e52" font-family="'Segoe UI',sans-serif">Albumen</text>
+              <text x="214" y="192" font-size="8.5" fill="#5a6e52" font-family="'Segoe UI',sans-serif">Yolk</text>
+              <line x1="212" y1="82" x2="174" y2="90" stroke="#a0b090" stroke-width="0.8"/>
+              <line x1="212" y1="137" x2="206" y2="120" stroke="#a0b090" stroke-width="0.8"/>
+              <line x1="212" y1="164" x2="192" y2="164" stroke="#a0b090" stroke-width="0.8"/>
+              <line x1="212" y1="191" x2="166" y2="173" stroke="#a0b090" stroke-width="0.8"/>
+            </svg>
+            <figcaption class="egg-caption">Click a step to highlight the corresponding egg layer</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PAGE: POULTRY SIMULATION ══════════════════════════ -->
+    <section class="page" id="page-simulation" aria-labelledby="heading-simulation">
+      <h2 id="heading-simulation" class="sr-only">Poultry Simulation</h2>
+      <div class="demo-banner" role="note">⚙ Simulation uses <code>data_fase_ayam.csv</code> and <code>data_pakan.csv</code>. All results are <strong>illustrative estimates only</strong> — not real farm measurements.</div>
+      <div class="sim-layout">
+        <div class="card sim-form-card">
+          <div class="card-head"><h3 class="card-title">Simulation Input</h3></div>
+          <div class="form-group">
+            <label for="simAge" class="form-label">Chicken Age <span class="form-hint">(weeks, 0–100)</span></label>
+            <input type="number" id="simAge" class="form-input" placeholder="e.g. 20" min="0" max="100" step="0.1" aria-required="true" aria-describedby="simAgeHint" />
+            <span id="simAgeHint" class="form-hint-inline" aria-live="polite"></span>
+          </div>
+          <div class="form-group">
+            <label for="simQty" class="form-label">Number of Chickens <span class="form-hint">(1–50,000)</span></label>
+            <input type="number" id="simQty" class="form-input" placeholder="e.g. 100" min="1" max="50000" step="1" aria-required="true" aria-describedby="simQtyHint" />
+            <span id="simQtyHint" class="form-hint-inline" aria-live="polite"></span>
+          </div>
+          <button class="btn btn-primary btn-full" id="simRunBtn">Run Simulation</button>
+        </div>
+        <div class="card sim-results-card" id="simResults" aria-live="polite" aria-atomic="true">
+          <div class="sim-empty">
+            <div class="sim-empty-icon" aria-hidden="true">⚙</div>
+            <p>Enter chicken age and quantity, then click <strong>Run Simulation</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PAGE: SMART POULTRY AI ════════════════════════════ -->
+    <section class="page" id="page-ai" aria-labelledby="heading-ai">
+      <h2 id="heading-ai" class="sr-only">Smart Poultry AI</h2>
+      <div class="demo-banner" role="note">
+        🤖 <strong>Demonstration assistant only.</strong> Responses are pre-programmed educational content — not a real AI service.
+        To connect a real AI API, replace the <code>getAIResponse()</code> function in <code>script.js</code>.
+      </div>
+      <div class="ai-layout">
+        <div class="card ai-chat-card">
+          <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Chat conversation">
+            <div class="chat-msg bot">
+              <div class="chat-avatar" aria-hidden="true">AI</div>
+              <div class="chat-bubble">
+                Hello! I'm <strong>SiklusAI</strong>, your demonstration poultry assistant.<br>
+                Ask me about chicken nutrition, growth stages, egg production, or farm management.<br>
+                Try one of the example questions on the right, or type your own!
+              </div>
+            </div>
+          </div>
+          <div class="chat-input-row">
+            <label for="chatInput" class="sr-only">Type your question</label>
+            <input type="text" id="chatInput" class="form-input" placeholder="Ask about poultry farming…" maxlength="300" />
+            <button class="btn btn-primary" id="chatSendBtn" aria-label="Send message">Send</button>
+          </div>
+        </div>
+        <div class="card ai-sidebar-card">
+          <h3 class="card-title" style="margin-bottom:12px">Example Questions</h3>
+          <div class="example-qs" id="exampleQs"></div>
+          <div class="ai-disclaimer" role="note">
+            <strong>⚠ Important:</strong> This assistant provides educational information only. For real farm health issues, always consult a qualified veterinarian.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PAGE: EGG PRODUCTION MONITORING ══════════════════ -->
+    <section class="page" id="page-production" aria-labelledby="heading-production">
+      <h2 id="heading-production" class="sr-only">Egg Production Monitoring</h2>
+      <div class="demo-banner" role="note">Records tagged <span class="src-tag">CSV</span> are pre-loaded from <code>data_produksi.csv</code>. Your entries are stored in browser local storage.</div>
+      <div id="prodError" class="error-msg" style="display:none" role="alert"></div>
+      <div class="prod-layout">
+        <div class="prod-left-col">
+          <div class="card">
+            <div class="card-head"><h3 class="card-title">Daily Log Entry</h3></div>
+            <div class="form-group">
+              <label for="prodDate" class="form-label">Date</label>
+              <input type="date" id="prodDate" class="form-input" aria-required="true" />
+            </div>
+            <div class="form-group">
+              <label for="prodFlock" class="form-label">Flock Size <span class="form-hint">(hens)</span></label>
+              <input type="number" id="prodFlock" class="form-input" placeholder="e.g. 250" min="1" max="100000" />
+            </div>
+            <div class="form-group">
+              <label for="prodEggs" class="form-label">Eggs Collected</label>
+              <input type="number" id="prodEggs" class="form-input" placeholder="e.g. 185" min="0" max="100000" />
+            </div>
+            <div class="form-group">
+              <label for="prodFeed" class="form-label">Feed Consumed <span class="form-hint">(kg, optional)</span></label>
+              <input type="number" id="prodFeed" class="form-input" placeholder="e.g. 27.5" min="0" step="0.1" />
+              <span class="form-hint-inline" style="color:var(--clr-muted)">FCR uses 60 g/egg as egg mass assumption (illustrative).</span>
+            </div>
+            <div class="form-group">
+              <label for="prodMort" class="form-label">Mortality <span class="form-hint">(hens)</span></label>
+              <input type="number" id="prodMort" class="form-input" value="0" min="0" max="100000" />
+            </div>
+            <button class="btn btn-primary btn-full" id="prodAddBtn">Add Record</button>
+            <div class="form-feedback" id="prodFeedback" aria-live="polite"></div>
+          </div>
+          <div class="card" style="margin-top:16px">
+            <div class="card-head"><h3 class="card-title">Production Summary</h3></div>
+            <div class="summary-grid">
+              <div class="sum-box"><div class="sum-label">Latest HDP</div><div class="sum-val" id="sumHDP">—</div></div>
+              <div class="sum-box"><div class="sum-label">Avg HDP (7d)</div><div class="sum-val" id="sumAvgHDP">—</div></div>
+              <div class="sum-box"><div class="sum-label">Total Eggs (7d)</div><div class="sum-val" id="sumTotal">—</div></div>
+              <div class="sum-box"><div class="sum-label">FCR (7-day avg)</div><div class="sum-val" id="sumFCR">—</div></div>
+            </div>
+            <div class="trend-line" id="trendLine"></div>
+          </div>
+        </div>
+        <div class="prod-right-col">
+          <div class="card">
+            <div class="card-head"><h3 class="card-title">Production Trend</h3></div>
+            <canvas id="prodChart" class="chart-canvas" aria-label="Egg production trend chart"></canvas>
+          </div>
+          <div class="card" style="margin-top:16px">
+            <div class="card-head">
+              <h3 class="card-title">Production History</h3>
+              <button class="btn-ghost" id="clearBtn">Clear my records</button>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table" id="prodTable">
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Flock</th>
+                    <th scope="col">Eggs</th>
+                    <th scope="col">Feed (kg)</th>
+                    <th scope="col">HDP %</th>
+                    <th scope="col">FCR</th>
+                    <th scope="col"><span class="sr-only">Actions</span></th>
+                  </tr>
+                </thead>
+                <tbody id="prodTbody"></tbody>
+              </table>
+              <p class="empty-msg" id="prodEmpty">No records yet. Add your first daily log above.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PAGE: CHICKEN HEALTH ══════════════════════════════ -->
+    <section class="page" id="page-health" aria-labelledby="heading-health">
+      <h2 id="heading-health" class="sr-only">Chicken Health</h2>
+      <div class="demo-banner" role="note">Educational health information sourced from <code>data_kesehatan.csv</code>. Not a substitute for professional veterinary diagnosis or treatment.</div>
+      <div id="healthError" class="error-msg" style="display:none" role="alert"></div>
+      <div class="search-filter-row">
+        <div class="search-wrap inline-search" role="search">
+          <span class="search-prefix" aria-hidden="true">🔍</span>
+          <label for="healthSearch" class="sr-only">Search health observations</label>
+          <input type="search" id="healthSearch" class="form-input" placeholder="Search symptom or cause…" />
+        </div>
+        <div class="filter-chip-row" id="healthFilters" role="group" aria-label="Filter by symptom keyword"></div>
+      </div>
+      <div class="health-grid" id="healthGrid"><p class="loading-msg">Loading health data…</p></div>
+      <p class="empty-msg" id="healthEmpty" style="display:none">No results match your search.</p>
+      <div class="vet-callout" role="note">
+        <div class="vet-icon" aria-hidden="true">🩺</div>
+        <p><strong>Always consult a qualified veterinarian</strong> for disease diagnosis, treatment prescriptions, and any situation involving significant mortality or rapid health deterioration in your flock.</p>
+      </div>
+    </section>
+
+    <!-- ═══ PAGE: LEARNING RESOURCES ════════════════════════ -->
+    <section class="page" id="page-learning" aria-labelledby="heading-learning">
+      <h2 id="heading-learning" class="sr-only">Learning Resources</h2>
+      <div class="demo-banner" role="note">Knowledge base sourced from <code>data_pengetahuan.csv</code>. Simulated educational content only.</div>
+      <div id="learningError" class="error-msg" style="display:none" role="alert"></div>
+      <div class="search-filter-row">
+        <div class="search-wrap inline-search" role="search">
+          <span class="search-prefix" aria-hidden="true">🔍</span>
+          <label for="learningSearch" class="sr-only">Search knowledge base</label>
+          <input type="search" id="learningSearch" class="form-input" placeholder="Search questions or topics…" />
+        </div>
+        <div class="filter-chip-row" id="learningFilters" role="group" aria-label="Filter by category"></div>
+      </div>
+      <div class="accordion-list" id="learningAccordion"><p class="loading-msg">Loading knowledge base…</p></div>
+      <p class="empty-msg" id="learningEmpty" style="display:none">No articles match your search.</p>
+    </section>
+
+    
+<!-- Admin Profile Modal -->
+<div class="profile-modal" id="profileModal" hidden>
+  <div class="profile-modal-content">
+    <button
+      type="button"
+      class="profile-modal-close"
+      id="profileModalClose"
+      aria-label="Close profile"
+    >×</button>
+
+    <div class="profile-modal-avatar">SA</div>
+
+    <h2>Siklus Admin</h2>
+    <p class="profile-modal-role">Farm Manager</p>
+
+    <div class="profile-info">
+      <div>
+        <span>Nama Pengguna</span>
+        <strong>Siklus Admin</strong>
+      </div>
+      <div>
+        <span>Peran</span>
+        <strong>Farm Manager</strong>
+      </div>
+      <div>
+        <span>Platform</span>
+        <strong>SIKLUSAYAM</strong>
+      </div>
+      <div>
+        <span>Status Akun</span>
+        <strong>Demo Account</strong>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="profile-modal-done"
+      id="profileModalDone"
+    >Tutup</button>
+  </div>
+</div>
+
+
+  </main><!-- /content-area -->
+</div><!-- /main-wrapper -->
+
+<script src="script.js"></script>
+</body>
+</html>

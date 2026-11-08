@@ -1,0 +1,5 @@
+﻿id_kasus,gejala_umum,kemungkinan_penyebab_umum,tindakan_awal_aman,eskalasi
+KH001,Nafsu makan menurun,Stres lingkungan atau gangguan kesehatan,Amati konsumsi pakan dan air; periksa kebersihan serta kondisi kandang,Hubungi dokter hewan jika berlanjut atau disertai gejala lain
+KH002,Bulu tampak kusam,Kondisi nutrisi atau lingkungan kurang optimal,"Periksa kualitas pakan, air, ventilasi, dan kebersihan kandang",Minta pemeriksaan tenaga kesehatan hewan bila tidak membaik
+KH003,Produksi telur menurun,"Perubahan pakan, stres, umur, atau gangguan kesehatan",Catat tren produksi dan cek ketersediaan pakan serta air,Konsultasikan ke dokter hewan untuk penurunan tajam atau berkelanjutan
+KH004,Ayam tampak lesu,"Stres panas, dehidrasi, atau penyakit",Pastikan air bersih tersedia dan amati kondisi lingkungan,Pisahkan sesuai arahan petugas kesehatan hewan dan segera konsultasi dokter hewan

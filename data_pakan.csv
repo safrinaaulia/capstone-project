@@ -1,0 +1,6 @@
+﻿umur_min_minggu,umur_max_minggu,fase,jenis_pakan,estimasi_pakan_gram_per_ekor_per_hari,catatan
+0,6,DOC,Pakan starter DOC,20,Angka ilustratif untuk simulasi; sesuaikan dengan panduan pakan produk
+7,8,Starter,Pakan starter,35,Angka ilustratif untuk simulasi
+9,16,Grower,Pakan grower,60,Angka ilustratif untuk simulasi
+17,18,Pre-Layer,Pakan pre-layer,85,Angka ilustratif untuk simulasi
+19,72,Layer,Pakan layer,110,Angka ilustratif untuk simulasi

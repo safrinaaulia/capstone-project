@@ -1,0 +1,6 @@
+﻿id,kategori,pertanyaan,jawaban
+PN001,Siklus hidup,Apa saja fase pertumbuhan ayam petelur?,"Fase umum yang digunakan dalam simulasi ini adalah DOC, starter, grower, pre-layer, dan layer."
+PN002,Produksi telur,Bagaimana menghitung persentase produksi telur?,"Persentase produksi harian dapat dihitung dengan membagi jumlah telur dengan jumlah ayam layer, lalu dikalikan 100."
+PN003,Pakan,Apakah kebutuhan pakan selalu sama?,"Tidak. Kebutuhan pakan dipengaruhi umur, strain, bobot badan, kondisi lingkungan, dan rekomendasi produsen pakan."
+PN004,Kesehatan,Apakah chatbot dapat mendiagnosis penyakit ayam?,Tidak. Chatbot hanya memberikan informasi edukasi dan langkah pengamatan awal. Diagnosis harus dilakukan dokter hewan.
+PN005,Kandang,Mengapa kebersihan kandang penting?,Kebersihan kandang membantu menjaga lingkungan pemeliharaan dan mengurangi faktor risiko gangguan kesehatan.

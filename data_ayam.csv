@@ -1,0 +1,4 @@
+﻿id_ayam,jenis_ayam,tanggal_menetas,umur_minggu,jumlah_ekor,status
+AY001,Ayam petelur,2026-05-23,24,100,Aktif
+AY002,Ayam petelur,2026-06-20,20,80,Aktif
+AY003,Ayam petelur,2026-08-01,14,70,Aktif
